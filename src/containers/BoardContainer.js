@@ -27,13 +27,17 @@ class BoardContainer extends Component {
         squareContent: ""}
       ]
     };
+    this.handleSquareChange = this.handleSquareChange.bind(this);
   }
 
   handleSquareChange(value, id){
     console.log(value, id);
-    //console.log(index);
-    //const selectedSquare = this.state.board[value];
-    //this.setState({board[selectedSquare].squareContent: "X"})
+
+    const newBoard = Array.from(this.state.board)
+    const selectedSquare = newBoard[id - 1];
+    selectedSquare.squareContent = value;
+    this.setState({board: newBoard})
+    console.log("state", selectedSquare.squareContent);
   }
 
   render(){
