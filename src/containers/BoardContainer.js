@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import SquareView from '../components/SquareView.js';
+import WonGameButton from '../components/WonGameButton.js';
 
 class BoardContainer extends Component {
   constructor(props){
@@ -25,9 +26,11 @@ class BoardContainer extends Component {
         squareContent: ""},
         {squareID: 9,
         squareContent: ""}
-      ]
+      ],
+      winMessage: ""
     };
     this.handleSquareChange = this.handleSquareChange.bind(this);
+    this.handleButtonClick = this.handleButtonClick.bind(this);
   }
 
   handleSquareChange(value, id){
@@ -40,6 +43,12 @@ class BoardContainer extends Component {
     console.log("state", selectedSquare.squareContent);
   }
 
+  handleButtonClick(){
+    console.log("this worked");
+    const newWinMessage = this.state.winMessage = "Well Done";
+    this.setState({winMessage: newWinMessage})
+  }
+
   render(){
     return(
       <>
@@ -48,6 +57,10 @@ class BoardContainer extends Component {
       listOfSquares={this.state.board}
       onSquareChange={this.handleSquareChange}/>
 
+
+      <button onClick={this.handleButtonClick}>have you won?</button>
+
+      <h2>{this.winMessage}</h2>
       </>
     )
   }
