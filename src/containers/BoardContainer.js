@@ -29,17 +29,21 @@ class BoardContainer extends Component {
     };
   }
 
-  handleSquareClick(index){
-    const selectedSquare = this.state.board[index];
-    //this.setState({selectedSquare.squareContent = "X"})
+  handleSquareChange(value, id){
+    console.log(value, id);
+    //console.log(index);
+    //const selectedSquare = this.state.board[value];
+    //this.setState({board[selectedSquare].squareContent: "X"})
   }
 
   render(){
     return(
       <>
       <h1>Noughts & Crosses</h1>
-      < SquareView listOfSquares={this.state.board}
-      onSquareSelected={this.handleSquareClick}/>
+      < SquareView
+      listOfSquares={this.state.board}
+      onSquareChange={this.handleSquareChange}/>
+
       </>
     )
   }
